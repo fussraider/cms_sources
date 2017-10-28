@@ -1,0 +1,136 @@
+﻿@media only screen and (max-width: 1440px) and (min-width: 980px){
+	html {
+		background:url(../img/background/bg-1280.jpg) center 20px no-repeat #222222;
+		-moz-background-size: 100%; /* Firefox 3.6+ */
+		-webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+		-o-background-size: 100%; /* Opera 9.6+ */
+		background-size: 100%; /* Современные браузеры */
+	}
+
+	.top-bar{
+		font-size: 16px;
+		letter-spacing: 3px;
+		padding-top: 2px;
+		padding-bottom: 2px;
+		max-height: 26px;
+	}
+	#motto {
+		width: 813px;
+	}
+
+	.header{
+		width: 813px;
+		height: 98px;
+	}
+
+	#logo{
+		height: 65px;
+		width: 382px;
+		background:url(../img/logo_middle.png) center top no-repeat;
+		margin-top: 33px;
+		float:left;
+	}
+
+	#quotes{
+		width: 306px;
+		min-height:46px;
+		max-height: 78px;
+		height: auto;
+		margin-left: 488px;
+		font-size:11px;
+		color: #4D4D4D;
+		padding: 13px 7px 20px 13px;
+		background:url(../img/quotes/v-for-vendetta_middle.png) 97% top no-repeat #000000;
+	}
+
+	#menu {
+		width: 813px;
+		height: 26px;
+		font-size: 23px;
+		font-weight:bold;
+	}
+
+	#menu #separator {
+		color: hsla(0,0%,100%,0.15);
+	}
+
+	#menu a, a:active {
+		padding-right: 3px;
+	}
+
+	.interesting {
+		width: 813px;
+		height: 299px;
+		margin-top: 11px;
+	}
+
+	.interesting #cover {
+		width: 377px;
+		background:url(../img/big-cover.jpg) no-repeat;
+		background-size: 100%;
+	}
+
+	.interesting #message {
+		margin-left: 384px;
+		padding-right: 7px;
+	}
+
+	.interesting #message .tittle h1{
+		font-size: 17px;
+	}
+
+	.interesting #message .text{
+		font-size: 16px;
+		padding-top: 10px;
+	}
+
+	.interesting #message .pages .point{
+	 	width: 13px;
+		height: 13px;
+		-moz-border-radius: 7px;
+		-webkit-border-radius: 7px;
+		border-radius: 7px;
+		margin-right: 5px;
+		margin-bottom: 3px;
+	}
+
+	.interesting #message .pages .point.active{
+		box-shadow: 0 0 7px 1px rgba(232,232,232,0.5);
+	}
+
+	.posts, .single_post, .error, .notice, .page {
+	   	width: 820px;
+	   	margin-top: 7px;
+	}
+
+	.posts .item {
+	    margin-bottom: 7px;
+	    margin-right: 3px;
+	    margin-left: 3px;
+	    width: 267px;
+	}
+
+	.posts .item img.left {
+		padding-right: 7px;
+	}
+
+	.posts .item img.right {
+		padding-left: 7px;
+	}
+
+	.posts .item #text {
+		font-size: 13px;
+		padding: 7px;
+	}
+
+	.posts .item #player {
+		font-size: 16px;
+		padding: 7px;
+	}
+
+	.play_btn {
+		height: 23px;
+		background:url('../img/play_btn_middle.png') no-repeat left center;
+		padding-left: 23px;
+	}
+}

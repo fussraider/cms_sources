@@ -1,0 +1,149 @@
+@media only screen and (min-width: 1440px){
+	html {
+		background:url(../img/background/bg-1920.jpg) center 30px no-repeat #222222;
+		-moz-background-size: 100%; /* Firefox 3.6+ */
+		-webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+		-o-background-size: 100%; /* Opera 9.6+ */
+		background-size: 100%; /* Современные браузеры */
+	}
+		
+	.top-bar{
+		font-size: 25px;
+		letter-spacing: 4px;
+		padding-top: 3px;
+		padding-bottom: 3px;
+		max-height: 40px;
+	}
+	#motto {
+		width: 1250px;
+	}
+
+	.header {
+		width: 1250px;
+		height: 150px;
+	}
+
+	.footer{
+		width: 1250px;
+		padding: 20px 0;
+	}
+
+	#logo{
+		height: 100px;
+		width: 587px;
+		background:url(../img/logo.png) center top no-repeat;
+		margin-top: 50px;
+		float:left;
+	}
+
+	#quotes{
+		width: 470px;
+		min-height:70px;
+		max-height: 120px;
+		height: auto;
+		margin-left: 750px;
+		font-size:17px;
+		color: #4D4D4D;
+		padding: 20px 10px 30px 20px;
+		background:url(../img/quotes/v-for-vendetta.png) 97% top no-repeat #000000;
+	}
+
+	#menu {
+		width: 1250px;
+		height: 40px;
+		font-size: 36px;
+		font-weight:bold;
+	}
+
+	#menu #separator {
+		color: hsla(0,0%,100%,0.15);
+	}
+
+	#menu a {
+		padding-right: 5px;
+	}
+
+	.interesting {
+		width: 1250px;
+		height: 460px;
+		margin-top: 17px;
+	}
+
+	.interesting #cover {
+		width: 580px;
+		background:url(../img/big-cover.jpg) no-repeat;
+		background-size: 100%;
+	}
+
+	.interesting #message {
+		margin-left: 590px;
+		padding-right: 10px;
+	}
+
+	.interesting #message .tittle h1{
+		font-size: 26px;
+	}
+
+	.interesting #message .text{
+		font-size: 25px;
+		padding-top: 15px;
+	}
+
+	.interesting #message .pages .point{
+	 	width: 20px;
+		height: 20px;
+		-moz-border-radius: 10px;
+		-webkit-border-radius: 10px;
+		border-radius: 10px;
+		margin-right: 8px;
+		margin-bottom: 5px;
+	}
+
+	.interesting #message .pages .point.active{
+		box-shadow: 0 0 10px 2px rgba(232,232,232,0.5);
+	}
+
+	.posts, .single_post, .error, .notice, .page {
+	   	width: 1260px;
+	   	margin-top: 10px;
+	}
+
+	.posts .item{
+	    margin-bottom: 10px;
+	    margin-right: 5px;
+	    margin-left: 5px;
+	    width: 410px;
+	}
+
+	.single_post .item, 
+	.error .item
+	.page .item{
+		margin: 5px;
+	}
+
+	.item img.left {
+		padding-right: 10px;
+	}
+
+
+
+	.item img.right {
+		padding-left: 10px;
+	}
+
+	.posts .item #text {
+		font-size: 20px;
+		padding: 10px;
+	}
+
+	.posts .item #player {
+		font-size: 24px;
+		padding: 10px;
+	}
+
+	.play_btn {
+		height: 35px;
+		background:url('../img/play_btn.png') no-repeat left center;
+		padding-left: 35px;
+	}
+}

@@ -1,0 +1,9 @@
+@media only screen and (max-width: 640px){
+	html {
+		background:url(../img/background/bg-480.jpg) center top no-repeat #222222;
+		-moz-background-size: 100%; /* Firefox 3.6+ */
+		-webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+		-o-background-size: 100%; /* Opera 9.6+ */
+		background-size: 100%; /* Современные браузеры */
+	}
+}

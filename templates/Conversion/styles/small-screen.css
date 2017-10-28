@@ -1,0 +1,128 @@
+@media only screen and (max-width : 980px ) and (min-width : 588px ){
+	html {
+		background:url(../img/background/bg-720.jpg) center 15px no-repeat #222222;
+		-moz-background-size: 100%; /* Firefox 3.6+ */
+		-webkit-background-size: 100%; /* Safari 3.1+ и Chrome 4.0+ */
+		-o-background-size: 100%; /* Opera 9.6+ */
+		background-size: 100%; /* Современные браузеры */
+	}
+
+	.top-bar{
+		font-size: 16px;
+		letter-spacing: 2px;
+		padding-top: 1px;
+		padding-bottom: 1px;
+		max-height: 18px;
+	}
+	#motto {
+		width: 569px;
+	}
+
+	.header{
+		width: 569px;
+		height: auto;
+	}
+
+	#logo{
+		height: 96px;
+		width: 100%;
+		background:url(../img/logo.png) center top no-repeat;
+		margin-top: 23px;
+		background-size: 100%
+	}
+
+	#quotes{
+		display: none;
+	}
+
+	#menu {
+		width: 569px;
+		height: 26px;
+		font-size: 26px;
+	}
+
+	#menu #separator {
+		color: hsla(0,0%,100%,0.15);
+	}
+
+	#menu a, a:active {
+		padding-right: 2px;
+	}
+
+	.interesting {
+		width: 569px;
+		height: 209px;
+		margin-top: 8px;
+	}
+
+	.interesting #cover {
+		width: 264px;
+		background:url(../img/big-cover.jpg) no-repeat;
+		background-size: 100%;
+	}
+
+	.interesting #message {
+		margin-left: 269px;
+		padding-right: 5px;
+	}
+
+	.interesting #message .tittle h1{
+		font-size: 12px;
+	}
+
+	.interesting #message .text{
+		font-size: 13px;
+		padding-top: 7px;
+	}
+
+	.interesting #message .pages .point{
+	 	width: 9px;
+		height: 9px;
+		-moz-border-radius: 5px;
+		-webkit-border-radius: 5px;
+		border-radius: 5px;
+		margin-right: 4px;
+		margin-bottom: 2px;
+	}
+
+	.interesting #message .pages .point.active{
+		box-shadow: 0 0 5px 1px rgba(232,232,232,0.5);
+	}
+
+	.posts, .single_post, .error, .notice, .page  {
+	   	width: 574px;
+	   	margin-top: 5px;
+	}
+
+	.posts .item {
+	    margin-bottom: 6px;
+	    margin-right: 3px;
+	    margin-left: 3px;
+	    width: 281px;
+	}
+
+	.posts .item img.left {
+		padding-right: 5px;
+	}
+
+	.posts .item img.right {
+		padding-left: 5px;
+	}
+
+	.posts .item #text {
+		font-size: 14px;
+		padding: 5px;
+	}
+
+	.posts .item #player {
+		font-size: 14px;
+		padding: 5px;
+	}
+
+	.play_btn {
+		height: 13px;
+		background:url('../img/play_btn_small.png') no-repeat left center;
+		padding-left: 16px;
+	}
+	
+}
