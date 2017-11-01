@@ -16,50 +16,54 @@ class template
 	private static $template_parts = array();
 	private static $template_vars = array();
 
-	public static function loadTemplate($data, $page, $vars, $fast = false)
+public static function loadTemplate($template_name, $page, $vars, $fast = false)
+{
+	if(!empty($template_name))
 	{
-		if(!empty($data))
+		if($fast)
 		{
-			if($fast)
+			if(!file_exists(config::getPath('templates') . '/' . $template_name . '/' . $page . '.tpl'))
 			{
-				if(!file_exists('./' . $data['dir'] . '/' . $data['name'] . '/' . $page . '.tpl'))
-				{
-					handler::engineError('template_not_found', $data['dir'] . '/' . $data['name'] . '/' . $page . '.tpl');
-				}
-				else
-				{
-					self::$template_dir = './' . $data['dir'] . '/' . $data['name'] . '/';
-					self::$template_page = $page;
-					self::$template_vars = $vars;
-					self::getTemplate($fast);
-					self::parseTemplate();
-					return self::$template;
-				}
+				handler::engineError('template_not_found', config::getPath('templates') . '/' . $template_name . '/' . $page . '.tpl', __FILE__, __LINE__);
 			}
 			else
 			{
-				if(!file_exists('./' . $data['dir'] . '/' . $data['name'] . '/' . $data['name'] . '.php'))
-				{
-					handler::engineError('template_not_found', $data['dir'] . '/' . $data['name'] . '/' . $data['name'] . '.tpl');
-				}
-				else
-				{
-					self::$template_dir = './' . $data['dir'] . '/' . $data['name'] . '/';
-					require_once self::$template_dir . $data['name'] . '.php';
-					self::$template_page = $page;
-					self::$template_parts = $t_files;
-					self::$template_vars = $vars;
-					self::getTemplate($fast);
-					self::parseTemplate();
-					return self::$template;
-				}
+				self::$template_dir = config::getPath('templates') . '/' . $template_name . '/';
+				self::$template_page = $page;
+				self::$template_vars = $vars;
+				self::getTemplate($fast);
+				self::parseTemplate();
+				return self::$template;
 			}
 		}
 		else
 		{
-			handler::engineError('template_not_configure');
+			if(!file_exists(config::getPath('templates') . '/' . $template_name . '/' . $template_name . '.php'))
+			{
+				handler::engineError('template_not_found', $_SERVER['DOCUMENT_ROOT'].'/'.$template_name['dir'] . '/' . $template_name . '/' . $template_name . '.tpl', __FILE__, __LINE__);
+				return false;
+			}
+			else
+			{
+				self::$template_dir = config::getPath('templates') . '/' . $template_name . '/';
+				require_once self::$template_dir . $template_name . '.php';
+				self::$template_page = $page;
+				self::$template_parts = $t_files;
+				self::$template_vars = $vars;
+				self::getTemplate($fast);
+				self::loadStyles($t_styles);   //загрузили стили
+				self::loadScripts($t_scripts); //загрузили скрипты
+				self::parseTemplate();
+				return self::$template;
+			}
 		}
 	}
+	else
+	{
+		handler::engineError('template_not_configure', null, __FILE__, __LINE__);
+		return false;
+	}
+}
 
 
    private static function getTemplate($fast = false)
@@ -118,6 +122,34 @@ class template
 		}
 		return $template_part;
 	}
+
+	private static function loadStyles($styles){
+		if(count($styles) > 0){
+			foreach($styles as $style => $media)
+				$system_styles['/'.config::$template.$style] = $media;
+		}
+
+		self::$template_vars['STYLES'] = null;
+		foreach($system_styles as $style => $media)
+			self::$template_vars['STYLES'] .= '<link type="text/css" rel="stylesheet" '.(!empty($media) ? 'media="'.trim($media).'"' : null).' href="'.config::getPath('templates', true).$style.'">';
+	}
+
+private static function loadScripts($scripts){
+	if(count($scripts) > 0){
+		foreach($scripts as $script => $in_footer)
+			$system_scripts['/'.config::$template.$script] = $in_footer;
+	}
+
+	self::$template_vars['HEADER_SCRIPTS'] = null;
+	self::$template_vars['FOOTER_SCRIPTS'] = null;
+
+	foreach($system_scripts as $script => $in_footer){
+		if($in_footer)
+			self::$template_vars['FOOTER_SCRIPTS'] .= '<script type="text/javascript" src="'.config::getPath('templates', true).$script.'"></script>';
+		else
+			self::$template_vars['HEADER_SCRIPTS'] .= '<script type="text/javascript" src="'.config::getPath('templates', true).$script.'"></script>';
+	}
+}
 
 	
 	//функция вывода имени класса (модуля)

@@ -30,27 +30,49 @@ class Config
 	public static $s_url = 1;
 
 	//настройки шаблонов
-	public static $template = array(
-				'dir'	=> 'templates',
-				'name'	=> 'Conversion'
-	);
+	public static $template = 'Conversion';
+
+	public static $dirs = array();
+
+	public static function setPath($name, $value){
+		self::$dirs[$name] = $value;
+	}
+
+	public static function getPath($name, $is_url = false){
+		if(isset(self::$dirs[$name])){
+			return ($is_url ? self::$dirs[$name] : $_SERVER['DOCUMENT_ROOT'].self::$dirs[$name]);
+		}
+		else
+			return false;
+	}
 
 	public static $global_cms_vars	= array();
-
+	
 
 	public static function getClassName()
 	{		
 		return self::$className;	
 	}
 
-	function __construct()
-	{
-		self::$global_cms_vars['SITE_NAME'] = self::$site_name;
-		self::$global_cms_vars['PAGE_TITLE'] = '';
-		self::$global_cms_vars['CONTENT'] = '';
-		self::$global_cms_vars['YEAR'] = date('Y');
-		self::$global_cms_vars['TIME'] = date('H:i:s');
-	}
+public function __construct()
+{
+	self::$dirs = array(
+		'root' 		=> '/',
+		'core' 		=> '/core',
+		'libraries'	=> '/core/libraries',
+		'includes'	=> '/includes',
+		'modules'	=> '/includes/modules',
+		'plugins'	=> '/includes/plugins',
+		'media'		=> '/media',
+		'images'	=> '/media/images',
+		'templates' => '/templates'
+	);
+	self::$global_cms_vars['SITE_NAME'] = self::$site_name;
+	self::$global_cms_vars['PAGE_TITLE'] = '';
+	self::$global_cms_vars['CONTENT'] = '';
+	self::$global_cms_vars['YEAR'] = date('Y');
+	self::$global_cms_vars['TIME'] = date('H:i:s');
+}
 
 }
 
