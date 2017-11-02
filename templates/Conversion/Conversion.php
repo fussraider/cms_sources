@@ -17,7 +17,6 @@ $t_files = array('HEADER','INTERESTING', 'QUOTES', 'CONTENT', 'MENU', 'FOOTER');
 //список подключаемых скриптов в порядке их подключения на страницах. jQuery система подключает по-умолчанию со своимир абочими файлами
 //path => in_footer? (true - footer; false - header)
 $t_scripts = array(
-	'/js/jquery.min.js'				=> false,
 	'/js/imagesloaded.pkgd.min.js'	=> false,
 	'/js/masonry.pkgd.min.js'		=> false
 );

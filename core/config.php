@@ -69,6 +69,7 @@ public function __construct()
 	);
 	self::$global_cms_vars['SITE_NAME'] = self::$site_name;
 	self::$global_cms_vars['PAGE_TITLE'] = '';
+	self::$global_cms_vars['USER_MESSAGE'] = '';
 	self::$global_cms_vars['CONTENT'] = '';
 	self::$global_cms_vars['YEAR'] = date('Y');
 	self::$global_cms_vars['TIME'] = date('H:i:s');

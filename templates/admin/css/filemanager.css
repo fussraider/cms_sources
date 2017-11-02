@@ -1,0 +1,40 @@
+.fm-icon {
+    width: 100%;
+    height: 150px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center center;
+    box-sizing: border-box;
+}
+
+.fm-filebox{
+    cursor: pointer;
+}
+
+.fm-icon-archive {
+    background-image: url('/media/images/filetypes/archive.png');
+}
+
+.fm-icon-php {
+    background-image: url('/media/images/filetypes/php.png');
+}
+
+.fm-icon-video {
+    background-image: url('/media/images/filetypes/video.png');
+}
+
+.fm-icon-pdf {
+    background-image: url('/media/images/filetypes/pdf.png');
+}
+
+.fm-icon-html {
+    background-image: url('/media/images/filetypes/html.png');
+}
+
+.fm-icon-audio {
+    background-image: url('/media/images/filetypes/audio.png');
+}
+
+.fm-icon-folder {
+    background-image: url('/media/images/filetypes/folder.png');
+}

@@ -34,6 +34,7 @@
 	{*MENU*}
     {*INTERESTING*}
    	<div>
+    {:USER_MESSAGE:}
     {*CONTENT*}
     </div>
     {*FOOTER*}

@@ -1,0 +1,85 @@
+/* body{
+    background-image: url('../images/bg.jpg');
+    background-position: top left;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed, fixed;
+} */
+
+.border-top-remove{
+    border-top: none !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.border-right-remove{
+    border-right: none !important;
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+}
+
+.border-left-remove{
+    border-left: none !important;
+    border-top-left-radius: 0 !important;
+    border-bottom-left-radius: 0 !important;
+}
+
+.padding-left-remove{
+    padding-left: 0 !important;
+}
+
+.padding-right-remove{
+    padding-right: 0 !important;
+}
+
+.padding-horizontal-remove{
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+}
+
+.padding-right{
+    padding-right: 25px;
+}
+
+.padding-left{
+    padding-left: 25px;
+}
+
+.padding-bottom {
+    padding-bottom: 25px;
+}
+
+.padding-horizontal{
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+#admin-content-box{
+    min-height: 500px;
+}
+
+.items-list > tbody > tr .actions-bar{
+    opacity: 0;
+}
+
+.items-list > tbody > tr:hover .actions-bar{
+    opacity: 1;
+}
+
+.text-shadow{
+    text-shadow: 3px 2px 3px #222;
+}
+
+.admin-page-header{
+    min-height: 155px;
+}
+
+.margin-left-minus{
+    margin-left: -25px !important;
+}
+
+@media (min-width: 1220px){
+    .margin-left-minus{
+        margin-left: -35px !important;
+    }
+}

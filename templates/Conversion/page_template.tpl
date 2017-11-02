@@ -33,6 +33,7 @@
     {*HEADER*}
 	{*MENU*}
    	<div>
+    {:USER_MESSAGE:}
     {*CONTENT*}
     </div>
     {*FOOTER*}

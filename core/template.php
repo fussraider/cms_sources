@@ -123,18 +123,31 @@ public static function loadTemplate($template_name, $page, $vars, $fast = false)
 		return $template_part;
 	}
 
-	private static function loadStyles($styles){
-		if(count($styles) > 0){
-			foreach($styles as $style => $media)
-				$system_styles['/'.config::$template.$style] = $media;
-		}
+private static function loadStyles($styles){
+	//формируем массив с базовыми стилями системы (подключаем uikit и компонент всплывающих подсказок)
+	$system_styles = array(
+		'/admin/css/uikit.almost-flat.min.css'						=> 'all',
+		'/admin/css/components/tooltip.almost-flat.min.css'			=> 'all',
+	);
 
-		self::$template_vars['STYLES'] = null;
-		foreach($system_styles as $style => $media)
-			self::$template_vars['STYLES'] .= '<link type="text/css" rel="stylesheet" '.(!empty($media) ? 'media="'.trim($media).'"' : null).' href="'.config::getPath('templates', true).$style.'">';
+	if(count($styles) > 0){
+		foreach($styles as $style => $media)
+			$system_styles['/'.config::$template.$style] = $media;
 	}
 
+	self::$template_vars['STYLES'] = null;
+	foreach($system_styles as $style => $media)
+		self::$template_vars['STYLES'] .= '<link type="text/css" rel="stylesheet" '.(!empty($media) ? 'media="'.trim($media).'"' : null).' href="'.config::getPath('templates', true).$style.'">';
+}
+
 private static function loadScripts($scripts){
+	//формируем массив с базовыми скриптами системы (подключаем jQuery, Uikit и компонент всплывающих подсказок)
+	$system_scripts = array(
+		'/admin/js/jquery.min.js'				=> false,
+		'/admin/js/uikit.min.js'				=> false,
+		'/admin/js/components/tooltip.min.js'	=> false
+	); 
+
 	if(count($scripts) > 0){
 		foreach($scripts as $script => $in_footer)
 			$system_scripts['/'.config::$template.$script] = $in_footer;
@@ -144,10 +157,11 @@ private static function loadScripts($scripts){
 	self::$template_vars['FOOTER_SCRIPTS'] = null;
 
 	foreach($system_scripts as $script => $in_footer){
+		$include_string = '<script type="text/javascript" src="'.config::getPath('templates', true).$script.'"></script>';
 		if($in_footer)
-			self::$template_vars['FOOTER_SCRIPTS'] .= '<script type="text/javascript" src="'.config::getPath('templates', true).$script.'"></script>';
+			self::$template_vars['FOOTER_SCRIPTS'] .= $include_string;
 		else
-			self::$template_vars['HEADER_SCRIPTS'] .= '<script type="text/javascript" src="'.config::getPath('templates', true).$script.'"></script>';
+			self::$template_vars['HEADER_SCRIPTS'] .= $include_string;
 	}
 }
 
