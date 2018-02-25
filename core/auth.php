@@ -88,8 +88,11 @@ class auth{
 					handler::userMessage($full_error, true);
 				}
 				else{
-					users::registerUser($user);
-					$_SESSION['registration_complete'] = true;
+					if(users::registerUser($user))
+						$_SESSION['registration_complete'] = true;
+					else
+						handler::userMessage('При регистрации возникла ошибка. Повторите попытку позже.', true);
+					
 				}
 				
 			}
