@@ -69,8 +69,12 @@ class auth{
 				$errors = array();
 				if(users::checkUserByName($user['login']))
 					$errors[] = 'Указанный логин уже занят';
+				if(!preg_match('/^[a-zA-Z0-9]{2,20}$/', $user['login']))
+					$errors[] = 'Логин должен состоять только из латинских букв и цифр. От 3 до 20 символов.';
 				if(users::checkUserByEmail($user['email']))
 					$errors[] = 'Указанный E-mail уже зарегистрирован на сайте';
+				if(!preg_match('/^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/', $user['email']))
+					$errors[] = 'Невалидный адрес электронной почты';
 				if(!preg_match('/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/', $user['password']))
 					$errors[] = 'Пароль должен сожержать только строчные и прописные латинские буквы, цифры, спецсимволы. Минимум 8 символов';
 				if(strcmp($user['password'], $user['password_confirmation']) !== 0 )
