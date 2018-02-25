@@ -25,20 +25,20 @@ class Registry implements StorableObject
 	private static $objects = array();
 	
 	//конструктор реестра, при создании подключаем модули ядра
-public function loadCore()
-{
-	$this->config = './core/config.php';
-	$this->functions = './core/functions.php';
-	$this->handler = './core/handler.php';
-	$this->database = './core/database.php';
-	//$this->users = './core/users.php';
-	//$this->auth = './core/auth.php';
-	$this->modules = './core/modules.php';
-	$this->surl = './core/surl.php';
-	$this->template = './core/template.php';
-	$this->menus = './core/menus.php';
-	//$this->plugins = './core/plugins.php';
-}
+	public function loadCore()
+	{
+		$this->config = './core/config.php';
+		$this->functions = './core/functions.php';
+		$this->handler = './core/handler.php';
+		$this->database = './core/database.php';
+		$this->users = './core/users.php';
+		$this->auth = './core/auth.php';
+		$this->modules = './core/modules.php';
+		$this->surl = './core/surl.php';
+		$this->template = './core/template.php';
+		$this->menus = './core/menus.php';
+		//$this->plugins = './core/plugins.php';
+	}
 
 	//метод синглтон для доступа к объекту
 	public static function singleton()
@@ -66,19 +66,19 @@ public function loadCore()
 	//добавляем объект в регистр
 	//$object - путь к подключаемому объекту
 	//$key - ключ доступа к объекту в регистре
-public function addObject($key, $object)
-{
-	if(!isset(self::$objects[$key])){
-		require_once($object);
-		self::$objects[$key] = new $key();	
+	public function addObject($key, $object)
+	{
+		if(!isset(self::$objects[$key])){
+			require_once $object;
+			self::$objects[$key] = new $key();	
+		}
+		else{
+			if(isset(self::$objects['handler']))
+				handler::engineError('exception', 'Заблокирована попытка переопределения объекта ' . $key . ': ' . $object);
+			else
+				die('Заблокирована попытка переопределения объекта ' . $key . ': ' . $object);
+		}
 	}
-	else{
-		if(isset(self::$objects['handler']))
-			handler::engineError('exception', 'Заблокирована попытка переопределения объекта ' . $key . ': ' . $object);
-		else
-			die('Заблокирована попытка переопределения объекта ' . $key . ': ' . $object);
-	}
-}
 	//альтернативный метод через магию
 	public function __set($key, $object)
 	{
@@ -119,6 +119,11 @@ public function addObject($key, $object)
 		array_push($names, self::getClassName());
 		//и возвращаем
 		return $names;
+	}
+
+	public static function disableDirectCall(){
+		if (!defined('_PLUGSECURE_'))
+			die('Прямой вызов модуля запрещен!');
 	}
 
 	

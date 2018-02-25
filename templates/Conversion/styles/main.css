@@ -128,9 +128,8 @@ div {
 }
 
 .single_post .item, 
-.error .item, 
-.page .item,
-.cms_user_message{
+.single_page .item, 
+.error .item{
 	background: #FFFFFF;
 	color: #444444;
    	text-decoration: none;

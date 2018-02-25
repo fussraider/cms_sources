@@ -29,9 +29,6 @@ else
 	handler::engineError('module_not_found', './includes/modules/stock/'.$request_module.'/'.$request_module.'.inc');
 }
 
-handler::engineError('exception', 'Тестовое исключение для проверки вывода ошибки', __FILE__, __LINE__);
-handler::userMessage('Обычное информационное сообщение');
-handler::userMessage('Сообщение об ошибке или предупреждение', true);
 config::$global_cms_vars['PAGE'] = template::loadTemplate(config::$template, $request_template, config::$global_cms_vars);
 
 //показываем страницу
