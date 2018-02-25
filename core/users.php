@@ -45,7 +45,19 @@ class users{
             return true;
         else
             return false;
-    }
+	}
+	
+	public static function checkUserByEmail($email){
+		$result = database::prepareQuery(
+			"SELECT COUNT(`email`) as `count` FROM `userlist` WHERE `email`='s:email';",
+			array('email'=>$email)
+		);
+		$result = $result->fetch_assoc();
+		if($result['count'] > 0)
+			return true;
+		else
+			return false;
+	}
 
     private static function getUserIdByName($name){
         $result = database::prepareQuery(
@@ -71,6 +83,20 @@ class users{
 		}
 		else
 			return false;
+	}
+
+	public static function registerUser($data){
+		if(!empty($data['login']) && !empty($data['password'] && !empty($data['email'] && strcmp($user['password'], $user['password_confirmation']) === 0))){
+			unset($data['password_confirmation']);
+			$sql = "INSERT INTO `userlist` SET `name`='s:login', `passwd`='s:password', `email`='s:email', `reg_date`=NOW()";
+
+			$data['password'] = functions::cryptPassword($data['password']);
+			$result = database::prepareQuery($sql, $data);
+
+			return $result;
+		}
+		else
+			handler::userMessage('Получен невалидный набор данных');
 	}
 
 /* 	private static function getUserRights(){

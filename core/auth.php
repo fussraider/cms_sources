@@ -56,6 +56,42 @@ class auth{
 				handler::userMessage('Заполнены не все поля', true);
 			}
 		}
+		elseif(isset($_POST['user_registration']) && !empty($_POST['user_registration'])){
+			if(!empty($_POST['user_login']) && !empty($_POST['user_email']) && !empty($_POST['user_password']) && !empty($_POST['user_password_confirmation'])){
+
+				$user = array(
+					'login' => $_POST['user_login'],
+					'email' => $_POST['user_email'],
+					'password' => $_POST['user_password'],
+					'password_confirmation' => $_POST['user_password_confirmation']
+				);
+
+				$errors = array();
+				if(users::checkUserByName($user['login']))
+					$errors[] = 'Указанный логин уже занят';
+				if(users::checkUserByEmail($user['email']))
+					$errors[] = 'Указанный E-mail уже зарегистрирован на сайте';
+				if(!preg_match('/(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$/', $user['password']))
+					$errors[] = 'Пароль должен сожержать только строчные и прописные латинские буквы, цифры, спецсимволы. Минимум 8 символов';
+				if(strcmp($user['password'], $user['password_confirmation']) !== 0 )
+					$errors[] = 'Поля паролей не совпадают.';
+
+				if($errors){
+					$full_error = '';
+					foreach($errors as $error)
+						$full_error .= '<li>' . $error . '</li>';
+
+					handler::userMessage($full_error, true);
+				}
+				else{
+					users::registerUser($user);
+					$_SESSION['registration_complete'] = true;
+				}
+				
+			}
+			else
+				handler::userMessage('Заполнены не все поля', true);
+		}
 	}
 
 	public static function checkUserLogin($login, $pass){

@@ -40,6 +40,8 @@ class Registry implements StorableObject
 		//$this->plugins = './core/plugins.php';
 	}
 
+	
+
 	//метод синглтон для доступа к объекту
 	public static function singleton()
     {

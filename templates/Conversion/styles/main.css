@@ -213,12 +213,14 @@ div {
     opacity: 1; 
 }
 
-form.user_auth_form {
+form.user_auth_form,
+form.user_registration_form {
 	width: 100%;
 	min-height: 500px;
 }
 
-form.user_auth_form .box {
+form.user_auth_form .box,
+form.user_registration_form .box {
 	position: relative;
 	width: 450px;
 }
